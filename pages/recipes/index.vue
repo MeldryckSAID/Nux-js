@@ -1,8 +1,7 @@
 <script setup>
-import MyButton from '@/components/elements/MyButton.vue'
-import DefaultLayout from '@/components/layouts/DefaultLayout.vue'
-import MyBackgroundScroll from '@/components/MyBackgroundScroll.vue'
-import {computed, onMounted, ref} from "vue"
+import MyButton from "@/components/MyButton.vue";
+import MyBackgroundScroll from "@/components/MyBackgroundScroll.vue";
+import { computed, onMounted, ref } from "vue";
 import RecipeCard from "@/components/recipecard/RecipeCard.vue";
 import { client } from "@/utils/axios";
 
@@ -12,23 +11,22 @@ import { client } from "@/utils/axios";
 
 const getRecipesThen = () => {
   // 1er appel
-  fetch(import.meta.env.VITE_API_URL + '/recipes')
-    .then(response => response.json())
+  fetch(import.meta.env.VITE_API_URL + "/recipes")
+    .then((response) => response.json())
     .then((recipes) => {
       // Puis le 2ème lorsque le 1er est terminé
-      fetch(import.meta.env.VITE_API_URL + '/recipes/cuisine/1')
-        .then(response => response.json())
-        .then(cuisineRecipies => console.log({ recipes, cuisineRecipies }))
-    })
-}
+      fetch(import.meta.env.VITE_API_URL + "/recipes/cuisine/1")
+        .then((response) => response.json())
+        .then((cuisineRecipies) => console.log({ recipes, cuisineRecipies }));
+    });
+};
 
-const recipes = ref([])
+const recipes = ref([]);
 
 const getRecipes = async () => {
-  const response = await client.get('/recipes')
-  return response.data
-}
-
+  const response = await client.get("/recipes");
+  return response.data;
+};
 
 // Retourner un tableau des noms des recettes en utilisant recipes.map
 // ["Spaghetti Bolognese", "Vegan Stir-Fry", "Updated Spaghetti name", "Riz cantonais", ...]
@@ -37,63 +35,68 @@ const getRecipes = async () => {
 // Retourner un boolean qui dit si une de vos recettes est du goal_id 1 en utilisant recipes.some
 // true
 const recipesNames = computed(() => {
-  return recipes.value.map((item) => item.recipe_name)
-})
+  return recipes.value.map((item) => item.recipe_name);
+});
 
 const spaghettiRecipes = computed(() => {
-  return recipes.value.filter((item) => item.recipe_name.toLowerCase().includes('spaghetti'))
-})
+  return recipes.value.filter((item) =>
+    item.recipe_name.toLowerCase().includes("spaghetti")
+  );
+});
 
 const hasGoalId1Long = computed(() => {
   return recipes.value.some((item) => {
     if (item.goal_id === 1) {
-      return true
+      return true;
     } else {
-      return false
+      return false;
     }
-  })
-})
+  });
+});
 
 const hasGoalId1 = computed(() => {
-  return recipes.value.some((item) => item.goal_id === 1)
-})
+  return recipes.value.some((item) => item.goal_id === 1);
+});
 
 const addRecipe = () => {
-  recipes.value.push({ recipe_name: 'Pesto spaghetti' })
-}
+  recipes.value.push({ recipe_name: "Pesto spaghetti" });
+};
 
-const recipesInHero = 4
+const recipesInHero = 4;
 // Utiliser 2 computed pour gérer les listes de recette
 // Une computed pour afficher les 4 premières du tableau recipes avec recipes.value.slice
 // Une computed pour afficher toutes les autres avec recipes.value.slice
 
 const heroRecipes = computed(() => {
   // indexes de 0 à 3 (4 exclus)
-  return recipes.value.slice(0, recipesInHero)
-})
+  return recipes.value.slice(0, recipesInHero);
+});
 
-const gridPage = ref(1)
+const gridPage = ref(1);
 
 const gridRecipes = computed(() => {
-  const recipesByPage = 4
+  const recipesByPage = 4;
   // pour gridPage === 1 => slice(4, 7)
   // pour gridPage === 2 => slice(4, 10)
   // pour gridPage === 3 => slice(4, 13)
-  return recipes.value.slice(recipesInHero, recipesInHero + gridPage.value * recipesByPage)
-})
+  return recipes.value.slice(
+    recipesInHero,
+    recipesInHero + gridPage.value * recipesByPage
+  );
+});
 
 // Retourner s'il reste des recettes à afficher ou non
 const moreRecipesToShow = computed(() => {
-  return gridRecipes.value.length < (recipes.value.length - recipesInHero)
-})
+  return gridRecipes.value.length < recipes.value.length - recipesInHero;
+});
 
 const seeMoreRecipe = () => {
-  gridPage.value++
-}
+  gridPage.value++;
+};
 
 onMounted(async () => {
-  recipes.value = await getRecipes()
-})
+  recipes.value = await getRecipes();
+});
 </script>
 
 <template>
@@ -109,7 +112,7 @@ onMounted(async () => {
     </template>
 
     <template #aside>
-      <img style='max-width: 100px;' src='@/assets/image-1.png' />
+      <img style="max-width: 100px" src="/public/burger.png" />
       <nav>
         <ul>
           <li><a href="#">Aside link 1</a></li>
@@ -121,22 +124,34 @@ onMounted(async () => {
     <p>Recettes de la grille</p>
     <div class="recipes-list">
       <div v-for="(recipe, index) in gridRecipes" :key="index">
-        <RecipeCard :id="recipe.recipe_id" :title="recipe.recipe_name" :description="recipe.recipe_description" :image="recipe.image_url" />
+        <RecipeCard
+          :id="recipe.recipe_id"
+          :title="recipe.recipe_name"
+          :description="recipe.recipe_description"
+          :image="recipe.image_url"
+        />
       </div>
     </div>
-    <button v-if="moreRecipesToShow" @click="seeMoreRecipe">Voir plus de recettes</button>
+    <button v-if="moreRecipesToShow" @click="seeMoreRecipe">
+      Voir plus de recettes
+    </button>
 
     <p>Toutes les recettes</p>
     <div class="recipes-list">
       <div v-for="(recipe, index) in recipes" :key="index">
-        <RecipeCard :id="recipe.recipe_id" :title="recipe.recipe_name" :description="recipe.recipe_description" :image="recipe.image_url" />
+        <RecipeCard
+          :id="recipe.recipe_id"
+          :title="recipe.recipe_name"
+          :description="recipe.recipe_description"
+          :image="recipe.image_url"
+        />
       </div>
     </div>
-    recipes names : {{ recipesNames }} <br><br>
-    spaghettiRecipes : {{ spaghettiRecipes }} <br><br>
-    hasGoalId1 : {{ hasGoalId1 }} <br><br>
+    recipes names : {{ recipesNames }} <br /><br />
+    spaghettiRecipes : {{ spaghettiRecipes }} <br /><br />
+    hasGoalId1 : {{ hasGoalId1 }} <br /><br />
     <button @click="addRecipe">Ajouter une recette</button>
-    <MyBackgroundScroll />
+  
 
     <template #footer>
       <MyButton href="/about" variant="rounded">My link Button</MyButton>

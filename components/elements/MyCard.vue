@@ -8,19 +8,20 @@ const props = defineProps({
   imageSrc: String,
   title: String,
   description: String,
-  price: String,
+  btn: Boolean,
   buttonLabel: String,
   variant: String,
   icon: Boolean,
   favori: Boolean,
-  btn: Boolean,
+  price: String,
   prices: Boolean,
   notes: Boolean,
   note: String
 })
 
 const className = computed(() => ({
-  ' -small': props.variant === 'small',
+  ' card': props.variant === 'presta',
+  ' -small': props.variant === 'menu',
   ' -recette': props.variant === 'recette'
 }))
 </script>
@@ -33,8 +34,8 @@ const className = computed(() => ({
       <div class="hfavori">
         <h2 class="title" size="small">{{ title }}</h2>
         <div class="like">
-          <MyIcon v-if="favori" name="Favori" stroke="primary" />
-          <p class="note" v-if="notes">${{ note }}</p>
+          <MyIcon v-if="favori" color="none" name="Favori" stroke="primary" />
+          <p class="note" v-if="notes">{{ note }}</p>
         </div>
       </div>
       <p>{{ description }}</p>
@@ -53,13 +54,13 @@ const className = computed(() => ({
 .card {
   max-width: rem(450);
   border-radius: rem(30);
-  border: rem(1) solid ;
+  border: rem(1) solid;
 
   position: relative;
   &__content {
-    padding: rem(20) rem(10);
+    padding: rem(20) rem(20);
     > * + * {
-      margin-top: rem(20);
+      margin-top: rem(30);
     }
     h2 {
       font-family: $primary-font-familly;
@@ -81,6 +82,13 @@ const className = computed(() => ({
     justify-content: center;
     background-color: none;
     padding: none;
+    margin-top: rem(-75);
+    img {
+      object-fit: cover;
+
+     
+      max-width: rem(485);
+    }
   }
   &__title {
     font-family: $primary-font-familly;
@@ -108,9 +116,8 @@ const className = computed(() => ({
     .card__icon {
       position: absolute;
       bottom: 0;
-      left: rem(-15);
-      transform: translate(50%, 80%);
-
+      left: 50%;
+      transform: translate(-50%, 50%);
       gap: 50px;
     }
   }

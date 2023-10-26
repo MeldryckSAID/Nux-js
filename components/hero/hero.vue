@@ -29,12 +29,12 @@
     </div>
     <div class="c-hero__button">
       <div v-for="button in buttons">
-        <button
+        <MyButton color="primary" tcolor="white" size="small"
           v-if="button.button_type === 'default'"
           class="c-hero__button -default"
         >
           <a :href="button.button_link.url">{{ button.button_label }}</a>
-        </button>
+        </MyButton >
         <button
           v-else="button.button_type === 'videos'"
           class="c-hero__button -videos"

@@ -5,8 +5,9 @@ const store = useGlobalStore();
 console.log(store);
 </script>
 <template>
-  <div class="c-header__count" @click="store.increment()">
+  <!-- <div class="c-header__count" @click="store.increment()">
     {{ store.count }}//{{ store.foo }}
-  </div>
+  </div> -->
+  <MyHeader />
 </template>
 <style lang="scss"></style>

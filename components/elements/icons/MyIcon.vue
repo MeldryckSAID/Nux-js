@@ -8,7 +8,10 @@ import IconCall from '../icons/IconCall.vue'
 import IconClock from '../icons/IconClock.vue'
 import IconLocalisation from '../icons/IconLocalisation.vue'
 import IconFavori from '../icons/IconFavori.vue'
+import IconMenuOpen from '../icons/IconMenuOpen.vue'
+import IconMenuClose from '../icons/IconMenuClose.vue'
 import IconNext from '../icons/IconNext.vue'
+import IconPlay from '../icons/IconPlay.vue'
 
 const props = defineProps({
   name: String,
@@ -35,8 +38,14 @@ const getIcon = computed(() => {
     return IconCall
   case 'Favori':
     return IconFavori
+  case 'Menu close':
+    return IconMenuClose
   case 'Next':
     return IconNext
+  case 'Menu open':
+    return IconMenuOpen
+  case 'Play':
+    return IconPlay
 
   default:
     return IconArrowR
@@ -48,8 +57,8 @@ const className = computed(() => ({
   ' -primary': props.color === 'primary',
   ' -white': props.color === 'white',
   ' -secondary': props.color === 'secondary',
-  ' -sans': props.color === 'base',
-  
+  ' -cnone': props.color === 'none',
+
   ' -sblack': props.stroke === 'black',
   ' -sprimary': props.stroke === 'primary',
   ' -swhite': props.stroke === 'white',
@@ -63,7 +72,8 @@ const className = computed(() => ({
 
   ' -fyellow': props.fill === 'yellow',
   ' -fblack': props.fill === 'black',
-  ' -fsans': props.fill === 'base'
+  ' -fsans': props.fill === 'base',
+  ' -fprimary': props.fill === 'primary'
 }))
 </script>
 
@@ -98,8 +108,9 @@ const className = computed(() => ({
   &.-black {
     background: #000;
   }
-  &.-sans {
+  &.-cnone {
     background: none;
+    box-shadow: none;
   }
 
   //fill
@@ -111,6 +122,9 @@ const className = computed(() => ({
   }
   &-.fsans {
     fill: none;
+  }
+  &.-fprimary {
+    background: #f48e28;
   }
 
   //stroke
@@ -138,12 +152,19 @@ const className = computed(() => ({
     svg {
       scale: 0.5;
     }
+    height: rem(25);
+    width: rem(25);
   }
   &.-regular {
-    size: 1rem;
+    height: rem(50);
+    width: rem(50);
   }
   &.-big {
-    size: 3rem;
+    svg {
+      scale: 1.5;
+    }
+    height: rem(100);
+    width: rem(100);
   }
 }
 </style>

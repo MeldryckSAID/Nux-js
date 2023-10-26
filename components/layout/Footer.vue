@@ -1,5 +1,5 @@
 <template>
-    <h1>footer</h1>
+   <MyFooter/>
 </template>
 <script setup></script>
 <style lang="scss"></style>
