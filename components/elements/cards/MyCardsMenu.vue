@@ -17,7 +17,7 @@ const response = [
 
   {
     id: '2',
-    title: 'Food Combo',
+    title: 'Combo',
     imageSrc: '/menu/combo.png',
     imageAlt: 'Food Combo',
     icon: true,
@@ -40,7 +40,7 @@ const response = [
   },
   {
     id: '4',
-    title: 'Gyro Sandwhic',
+    title: 'Cakes',
     imageSrc: '/menu/cake.png',
     imageAlt: 'cake',
     icon: true,
