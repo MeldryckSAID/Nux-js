@@ -1,7 +1,7 @@
 <template>
   <main class="layout">
     <header class="layout__header">
-      <slot name="header"></slot>
+      <MyHeader imageAlt="logo de l'entreprise" imageSrc="../../..//public/logo.png" />
     </header>
     <aside class="layout__aside">
       <slot name="aside"></slot>
@@ -9,8 +9,8 @@
     <article class="layout__article">
       <NuxtPage />
     </article>
-  
-    <Footer/>
+
+    <MyFooter />
   </main>
 </template>
 <style lang="scss" scoped>
@@ -43,7 +43,6 @@
     grid-area: footer;
   }
   &__header {
-    background: $primary-color;
     grid-area: header;
   }
 }
