@@ -15,8 +15,6 @@ const { data: home } = await useAsyncData("home", () =>
 
     <MyInformationPrismics :info="home.data.info" />
 
-    <!-- <pre>{{ home.data }}</pre> -->
-
     <div class="presentation_section">
       <h5 class="section__name">
         <PrismicRichText :field="home.data.presentation_service" />
@@ -26,7 +24,17 @@ const { data: home } = await useAsyncData("home", () =>
       </MyTitle>
     </div>
     <MyServicePrismics :Cardservice="home.data.services_card" />
-
+    <div class="presentation_section">
+      <h5 class="section__name">
+        <PrismicRichText :field="home.data.presentation_testimonials" />
+      </h5>
+      <MyTitle el="h3" size="large">
+        <PrismicRichText :field="home.data.testimonials_title" />
+      </MyTitle>
+    </div>
+    <MytestimonialsPrismics :testimonials="home.data.testinomial"/>
+    <!-- <pre>{{ home.data.testinomial }}</pre> -->
+    
     <MynewsletterPrismics :newsletter="home.data.newsletter" />
   </div>
 </template>
