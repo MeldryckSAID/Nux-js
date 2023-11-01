@@ -17,21 +17,30 @@ const { data: home } = await useAsyncData("home", () =>
 
     <!-- <pre>{{ home.data }}</pre> -->
 
-    <h5 class="presentation">
-      <PrismicRichText :field="home.data.presentation_service" />
-    </h5>
-    <h5><PrismicRichText :field="home.data.service_title" /></h5>
-
+    <div class="presentation_section">
+      <h5 class="section__name">
+        <PrismicRichText :field="home.data.presentation_service" />
+      </h5>
+      <MyTitle el="h3" size="large">
+        <PrismicRichText :field="home.data.service_title" />
+      </MyTitle>
+    </div>
     <MyServicePrismics :Cardservice="home.data.services_card" />
-
-    
 
     <MynewsletterPrismics :newsletter="home.data.newsletter" />
   </div>
 </template>
 
 <style lang="scss">
-.presentation {
-  color: $primary-color;
+.presentation_section {
+  text-align: center;
+  .section__name {
+    color: $primary-color;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
 }
 </style>
