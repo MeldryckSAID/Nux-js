@@ -1,8 +1,5 @@
 <script setup>
-import MyButton from "@/components/MyButton.vue";
-import MyBackgroundScroll from "@/components/MyBackgroundScroll.vue";
 import { computed, onMounted, ref } from "vue";
-import RecipeCard from "@/components/recipecard/RecipeCard.vue";
 import { client } from "@/utils/axios";
 
 // Modifier les deux fonctions pour executer 2 requêtes dans chacune, l'une après l'autre.
@@ -151,7 +148,6 @@ onMounted(async () => {
     spaghettiRecipes : {{ spaghettiRecipes }} <br /><br />
     hasGoalId1 : {{ hasGoalId1 }} <br /><br />
     <button @click="addRecipe">Ajouter une recette</button>
-  
 
     <template #footer>
       <MyButton href="/about" variant="rounded">My link Button</MyButton>

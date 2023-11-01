@@ -4,6 +4,7 @@
   padding: 5%;
   grid-template-columns: repeat(2, 1fr);
 
+  
   strong {
     color: orange;
   }

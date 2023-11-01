@@ -1,6 +1,5 @@
 <script setup>
-import MyIcon from '../elements/icons/MyIcon.vue'
-import MySocialIcon from '../elements/icons/resaux/MySocialIcon.vue'
+
 </script>
 
 <template>
