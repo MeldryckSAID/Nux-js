@@ -1,7 +1,10 @@
 <template>
   <main class="layout">
     <header class="layout__header">
-      <MyHeader imageAlt="logo de l'entreprise" imageSrc="../../..//public/logo.png" />
+      <MyHeader
+        imageAlt="logo de l'entreprise"
+        imageSrc="../../..//public/logo.png"
+      />
     </header>
     <aside class="layout__aside">
       <slot name="aside"></slot>

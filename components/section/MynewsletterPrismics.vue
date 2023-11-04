@@ -1,33 +1,33 @@
-<script setup>
-import { computed } from 'vue'
-import MyButton from '../MyButton.vue'
-
-const props = defineProps({
-  imageAlt: String,
-  imageSrc: String,
-  title: String,
-  paragraphe: String
-})
-
-const className = computed(() => ({
-  ' -small': props.text_Back === 'small'
-}))
-</script>
 <template>
-  <div class="Newletter" :class="className">
-    <img :src="imageSrc" :alt="imageAlt" />
+  <div class="Newletter" v-for="item in newsletter">
+    <img :src="item.newsletter_image.url" />
 
     <div class="Newletter__information">
-      <h3 class="Newletter__title">{{ title }}</h3>
-      <p class="Newletter__text">{{ paragraphe }}</p>
-      <div class="Newletter__form">
+      <MyTitle el="h5" size="small" strong="strong"
+        ><PrismicRichText :field="item.newsletter_title"
+      /></MyTitle>
+      <p><PrismicText :field="item.newsletter_text" /></p>
+      <div class="Newletter__form" v-for="newsletter in newsletter">
         <input placeholder="Type your email....." type="text" />
-        <MyButton color="primary" tcolor="white" variant="rounded">SUBCRIBE</MyButton>
+        <MyButton
+          v-if="newsletter.newsletter_button === 'sub'"
+          color="primary"
+          tcolor="white"
+          :href="newsletter.newsletter_button_label"
+        >
+          {{ newsletter.newsletter_button_label }}
+        </MyButton>
       </div>
     </div>
   </div>
 </template>
-<style lang="scss">
+<script setup>
+const props = defineProps({
+  newsletter: Array,
+ 
+});
+</script>
+<style lang="scss" scooped>
 .Newletter {
   display: flex;
   flex-direction: row;
@@ -45,7 +45,7 @@ const className = computed(() => ({
     object-fit: contain;
   }
   &__information {
-    h3 {
+    h5 {
       font-family: Montserrat;
       font-size: 36px;
       font-style: normal;

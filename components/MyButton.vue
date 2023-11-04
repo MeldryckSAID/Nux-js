@@ -1,6 +1,6 @@
 <script setup>
-import { computed } from 'vue'
-import MyIcon from '@/components/elements/icons/MyIcon.vue'
+import { computed } from "vue";
+import MyIcon from "@/components/elements/icons/MyIcon.vue";
 const props = defineProps({
   href: String,
   size: String,
@@ -8,35 +8,38 @@ const props = defineProps({
   color: String,
   iconr: Boolean,
   iconl: Boolean,
-  tcolor: String
-})
+  tcolor: String,
+});
 
 const className = computed(() => ({
-  ' -rounded': props.variant === 'rounded',
-  ' -small': props.size === 'small',
-  ' -iconr': props.iconr,
-  ' -iconl': props.iconl,
+  " -rounded": props.variant === "rounded",
+  " -small": props.size === "small",
+  " -iconr": props.iconr,
+  " -iconl": props.iconl,
 
   //color
-  ' -sprimary': props.color === 'primary',
-  ' -swhite': props.color === 'white',
-  ' -ssecondary': props.color === 'secondary',
-  ' -slinear': props.color === 'linear',
-  ' -snone': props.color === 'none',
+  " -sprimary": props.color === "primary",
+  " -swhite": props.color === "white",
+  " -ssecondary": props.color === "secondary",
+  " -slinear": props.color === "linear",
+  " -snone": props.color === "none",
 
   //text
-  ' -tblack': props.tcolor === 'black',
-  ' -twhite': props.tcolor === 'white'
-}))
+  " -tblack": props.tcolor === "black",
+  " -twhite": props.tcolor === "white",
+}));
 </script>
 <template>
   <a v-if="href" :href="href" class="button tcolor" :class="className">
-    <MyIcon v-if="iconl" name="Play" stroke="primary" color="white" /><slot class="tcolor"></slot>
+    <MyIcon v-if="iconl" name="Play" stroke="primary" color="white" /><slot
+      class="tcolor"
+    ></slot>
     <MyIcon v-if="iconr" name="Next" stroke="primary" color="white" />
   </a>
   <button v-else class="button tcolor" :class="className">
-    <MyIcon v-if="iconl" name="Play" stroke="primary" color="white" />
-    <slot ></slot><MyIcon v-if="iconr" name="Next" stroke="primary" color="white" />
+    <MyIcon v-if="iconl"  name="Play" stroke="primary" color="white" />
+    <slot></slot
+    ><MyIcon v-if="iconr" name="Next" stroke="primary" color="white" />
   </button>
 </template>
 
@@ -84,6 +87,7 @@ const className = computed(() => ({
     display: flex;
     align-items: center;
     gap: 10px;
+    box-shadow: none;
   }
   &.-sprimary {
     background-color: $primary-color;
@@ -97,7 +101,11 @@ const className = computed(() => ({
   }
 
   &.-slinear {
-    background: linear-gradient(180deg, $secondary-color 0%, $primary-color 100%);
+    background: linear-gradient(
+      180deg,
+      $secondary-color 0%,
+      $primary-color 100%
+    );
   }
   &.-snone {
     background: none;
