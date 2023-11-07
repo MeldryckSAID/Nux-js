@@ -1,55 +1,24 @@
 <script setup>
-defineProps({
-  id: Number,
-  title: String,
-  description: String,
-  image: String,
+const env = useRuntimeConfig();
+
+const props = defineProps({});
+
+const { data: recipes } = await useAsyncData("recipes", () => {
+  return $fetch(env.public.apiUrl + "/recipes");
 });
 </script>
 
 <template>
-  <div class="c-recipe-card">
-    <div class="c-recipe-card__content">
-      <img class="c-recipe-card__image" :src="image" alt="" />
-      <p class="c-recipe-card__title">{{ title }}</p>
-      <p class="c-recipe-card__description">{{ description }}</p>
-      <RouterLink :to="`/recipes/${id}`">Plus d'infos</RouterLink>
+  <div class="test">
+    <div v-for="recipes in recipes" :key="recipe_id">
+      <RecipeCardItem
+        :id="recipes.recipe_id"
+        :title="recipes.recipe_name"
+        :description="recipes.recipe_description"
+        :image="recipes.image_url"
+      />
     </div>
   </div>
 </template>
 
-<style lang="scss">
-.c-recipe-card {
-  background-color: $white;
-  box-shadow: 0 0 31px 0 rgba(0, 0, 0, 0.05);
-  border-radius: 10px;
-
-  &__content {
-    padding: 20px;
-  }
-
-  &__image {
-    width: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
-  }
-
-  &__title {
-    font-size: 22px;
-    line-height: 1.2;
-    color: black;
-    &:not(:first-child) {
-      margin-top: 10px;
-    }
-  }
-
-  &__description {
-    font-size: 16px;
-    color: black;
-    line-height: 1.2;
-    &:not(:first-child) {
-      margin-top: 10px;
-    }
-  }
-}
-</style>
+<style lang="scss" scoped></style>
