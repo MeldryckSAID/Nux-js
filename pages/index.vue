@@ -6,8 +6,6 @@ const { data: home } = await useAsyncData("home", () =>
 const { data: recipes } = await useAsyncData("recipes", () => {
   return $fetch(env.public.apiUrl + "/recipes");
 });
-
-console.log(recipes);
 </script>
 
 <template>
@@ -36,7 +34,15 @@ console.log(recipes);
     <MyServicePrismics :Cardservice="home.data.services_card" />
 
     <!-- menu -->
-    <RecipeCard />
+    <div class="presentation_section">
+      <h5 class="section__name">
+        <PrismicRichText :field="home.data.presentation_service" />
+      </h5>
+      <MyTitle el="h3" size="large">
+        <PrismicRichText :field="home.data.service_title" />
+      </MyTitle>
+    </div>
+    <RecipeCard></RecipeCard>
 
     <div class="section__button">
       <MyButton

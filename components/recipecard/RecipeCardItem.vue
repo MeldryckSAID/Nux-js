@@ -4,6 +4,7 @@ defineProps({
   title: String,
   description: String,
   image: String,
+  note: String,
 });
 </script>
 
@@ -12,8 +13,31 @@ defineProps({
     <div class="c-recipe-card__content">
       <img class="c-recipe-card__image" :src="image" alt="" />
       <p class="c-recipe-card__title">{{ title }}</p>
-      <p class="c-recipe-card__description">{{ description }}</p>
-      <RouterLink :to="`/recipes/${id}`">Plus d'infos</RouterLink>
+      <!-- <p class="c-recipe-card__description">{{ description }}</p> -->
+      <div class="c-recipe-card__like">
+        <MyIcon color="none" name="Favori" stroke="primary" />
+        <p class="note">{{ note }}</p>
+      </div>
+      <div class="c-recipe-card__button">
+        <RouterLink :to="`/recipes/${id}`">
+          <MyButton
+            color="white"
+            variant="rounded"
+            size="small"
+            tcolor="primary"
+            >More info</MyButton
+          >
+        </RouterLink>
+        <RouterLink :to="`/recipes/${id}`">
+          <MyButton
+            color="primary"
+            variant="rounded"
+            size="small"
+            tcolor="white"
+            >Add to cart</MyButton
+          >
+        </RouterLink>
+      </div>
     </div>
   </div>
 </template>
@@ -23,24 +47,42 @@ defineProps({
   background-color: $white;
   box-shadow: 0 0 31px 0 rgba(0, 0, 0, 0.05);
   border-radius: 10px;
+  width: 520px;
+  height: 550px;
+  transition: border 0.3s;
+  border: 2px solid $white;
 
   &__content {
     padding: 20px;
   }
 
   &__image {
-    width: 100%;
+    background-color: red;
+    width: 480px;
+    height: 333px;
     aspect-ratio: 1;
     object-fit: cover;
   }
 
   &__title {
-    font-size: 22px;
     line-height: 1.2;
     color: black;
+    font-family: Montserrat;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
     &:not(:first-child) {
       margin-top: 10px;
     }
+  }
+  &__like {
+    display: flex;
+    justify-content: flex-end;
+  }
+  &__button {
+    display: flex;
+    justify-content: space-around;
   }
 
   &__description {
@@ -51,5 +93,8 @@ defineProps({
       margin-top: 10px;
     }
   }
+}
+.c-recipe-card:hover {
+  border: 2px solid $primary-color;
 }
 </style>
