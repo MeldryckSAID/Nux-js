@@ -42,8 +42,16 @@ onMounted(async () => {
       </MyTitle>
     </div>
     <MyServicePrismics :Cardservice="home.data.services_card" />
-
+    
     <!-- menu -->
+    <div class="presentation_section">
+      <h5 class="section__name">
+        <PrismicRichText :field="home.data.presentation_item" />
+      </h5>
+      <MyTitle el="h3" size="large">
+        <PrismicRichText :field="home.data.item_title" />
+      </MyTitle>
+    </div>
     <RecipeCard
       v-for="recipe in recipes"
       :key="recipe.id"
