@@ -6,16 +6,6 @@ const { data: home } = await useAsyncData("home", () =>
 const { data: recipes } = await useAsyncData("recipes", () => {
   return $fetch(env.public.apiUrl + "/recipes");
 });
-
-
-onMounted(async () => {
-  try {
-    const response = await fetch("/recipes");
-    recipes.value = await response.json();
-  } catch (error) {
-    console.error("Erreur :", error);
-  }
-});
 </script>
 
 <template>
@@ -46,6 +36,7 @@ onMounted(async () => {
     <!-- menu -->
     <div class="presentation_section">
       <h5 class="section__name">
+
         <PrismicRichText :field="home.data.presentation_item" />
       </h5>
       <MyTitle el="h3" size="large">
@@ -60,6 +51,7 @@ onMounted(async () => {
       :description="recipe.recipe_description"
       :image="recipe.image_url"
     />
+
     <div class="section__button">
       <MyButton
         iconr="true"
