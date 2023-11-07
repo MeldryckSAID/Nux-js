@@ -5,14 +5,20 @@
         <img :src="imageSrc" :alt="imageAlt" />
       </div>
       <div class="header__nav">
-        <nav>
+        <!-- <nav>
           <ul>
             <li>Home</li>
             <li>Menu</li>
             <li>Service</li>
             <li>Shope</li>
           </ul>
-        </nav>
+        </nav> -->
+        <RouterLink class="link_router" :to="`/`"> home</RouterLink>
+        <RouterLink class="link_router" :to="`/recipes/AllRecipes`">
+          Menu</RouterLink
+        >
+        <RouterLink class="link_router" :to="`/`"> Service</RouterLink>
+        <RouterLink class="link_router" :to="`/`"> Shope</RouterLink>
       </div>
       <div class="header__schearbar">
         <div class="__search">
@@ -64,6 +70,21 @@ const className = computed(() => ({
       margin: 0;
       padding: 10px;
       gap: 25px;
+    }
+    .link_router {
+      text-decoration: none;
+      color: $black;
+      font-family: $primary-font-familly;
+      display: inline-block;
+      margin: 0;
+      padding: 10px;
+      gap: 25px;
+      transition: border-bottom 0.3s;
+      border-bottom: 2px solid transparent;
+    }
+    .link_router:hover {
+      border-bottom: 2px solid $primary-color;
+     
     }
   }
   ::placeholder {
