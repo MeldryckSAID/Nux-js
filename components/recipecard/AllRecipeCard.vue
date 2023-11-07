@@ -12,13 +12,12 @@ console.log(recipes);
 
 <template>
   <div class="Cardsapi">
-    <div v-for="(recipes, index) in recipes.slice(0, 6)" :key="recipe_id">
+    <div v-for="recipes in recipes" :key="recipe_id">
       <RecipeCardItem
         :id="recipes.recipe_id"
         :title="recipes.recipe_name"
         :description="recipes.recipe_description"
         :image="recipes.image_url"
-      
       />
     </div>
   </div>

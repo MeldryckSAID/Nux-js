@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="h">
     <div class="Top__header" :class="className">
       <div class="header__logo">
         <img :src="imageSrc" :alt="imageAlt" />

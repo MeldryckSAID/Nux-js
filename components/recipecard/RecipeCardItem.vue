@@ -5,6 +5,7 @@ defineProps({
   description: String,
   image: String,
   note: String,
+  
 });
 </script>
 
@@ -28,7 +29,7 @@ defineProps({
             >More info</MyButton
           >
         </RouterLink>
-        <RouterLink :to="`/recipes/${id}`">
+       
           <MyButton
             color="primary"
             variant="rounded"
@@ -36,7 +37,7 @@ defineProps({
             tcolor="white"
             >Add to cart</MyButton
           >
-        </RouterLink>
+      
       </div>
     </div>
   </div>

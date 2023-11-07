@@ -3,9 +3,7 @@ const { client } = usePrismic();
 const { data: home } = await useAsyncData("home", () =>
   client.getSingle("homepage")
 );
-const { data: recipes } = await useAsyncData("recipes", () => {
-  return $fetch(env.public.apiUrl + "/recipes");
-});
+
 </script>
 
 <template>
@@ -45,13 +43,15 @@ const { data: recipes } = await useAsyncData("recipes", () => {
     <RecipeCard></RecipeCard>
 
     <div class="section__button">
-      <MyButton
-        iconr="true"
-        color="primary"
-        variant="rounded"
-        size="small"
-        tcolor="white"
-        >See More Product</MyButton
+      <RouterLink :to="`/recipes/AllRecipes`">
+        <MyButton
+          iconr="true"
+          color="primary"
+          variant="rounded"
+          size="small"
+          tcolor="white"
+          >See More Product</MyButton
+        ></RouterLink
       >
     </div>
 
@@ -93,5 +93,10 @@ const { data: recipes } = await useAsyncData("recipes", () => {
     font-weight: 500;
     line-height: normal;
   }
+}
+.section__button {
+  display: flex;
+  justify-content: center;
+  padding: 2%;
 }
 </style>
