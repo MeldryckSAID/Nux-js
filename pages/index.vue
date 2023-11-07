@@ -6,16 +6,6 @@ const { data: home } = await useAsyncData("home", () =>
 const { data: recipes } = await useAsyncData("recipes", () => {
   return $fetch(env.public.apiUrl + "/recipes");
 });
-
-
-onMounted(async () => {
-  try {
-    const response = await fetch("/recipes");
-    recipes.value = await response.json();
-  } catch (error) {
-    console.error("Erreur :", error);
-  }
-});
 </script>
 
 <template>
@@ -44,14 +34,16 @@ onMounted(async () => {
     <MyServicePrismics :Cardservice="home.data.services_card" />
 
     <!-- menu -->
-    <RecipeCard
-      v-for="recipe in recipes"
-      :key="recipe.id"
-      :id="recipe.id"
-      :title="recipe.recipe_name"
-      :description="recipe.recipe_description"
-      :image="recipe.image_url"
-    />
+    <div class="presentation_section">
+      <h5 class="section__name">
+        <PrismicRichText :field="home.data.presentation_service" />
+      </h5>
+      <MyTitle el="h3" size="large">
+        <PrismicRichText :field="home.data.service_title" />
+      </MyTitle>
+    </div>
+    <RecipeCard></RecipeCard>
+
     <div class="section__button">
       <MyButton
         iconr="true"
