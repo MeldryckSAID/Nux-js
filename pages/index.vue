@@ -32,17 +32,25 @@ const { data: recipes } = await useAsyncData("recipes", () => {
       </MyTitle>
     </div>
     <MyServicePrismics :Cardservice="home.data.services_card" />
-
+    
     <!-- menu -->
     <div class="presentation_section">
       <h5 class="section__name">
-        <PrismicRichText :field="home.data.presentation_service" />
+
+        <PrismicRichText :field="home.data.presentation_item" />
       </h5>
       <MyTitle el="h3" size="large">
-        <PrismicRichText :field="home.data.service_title" />
+        <PrismicRichText :field="home.data.item_title" />
       </MyTitle>
     </div>
-    <RecipeCard></RecipeCard>
+    <RecipeCard
+      v-for="recipe in recipes"
+      :key="recipe.id"
+      :id="recipe.id"
+      :title="recipe.recipe_name"
+      :description="recipe.recipe_description"
+      :image="recipe.image_url"
+    />
 
     <div class="section__button">
       <MyButton
