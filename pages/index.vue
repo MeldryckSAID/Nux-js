@@ -3,7 +3,6 @@ const { client } = usePrismic();
 const { data: home } = await useAsyncData("home", () =>
   client.getSingle("homepage")
 );
-
 </script>
 
 <template>
@@ -18,6 +17,7 @@ const { data: home } = await useAsyncData("home", () =>
     />
 
     <!-- information -->
+
     <MyInformationPrismics :info="home.data.info" />
 
     <!-- services -->
@@ -29,6 +29,7 @@ const { data: home } = await useAsyncData("home", () =>
         <PrismicRichText :field="home.data.service_title" />
       </MyTitle>
     </div>
+
     <MyServicePrismics :Cardservice="home.data.services_card" />
 
     <!-- menu -->

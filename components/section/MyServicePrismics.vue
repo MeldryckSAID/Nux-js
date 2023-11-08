@@ -23,6 +23,8 @@ const props = defineProps({
   display: inline-flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  height: 486px;
 
   /* base */
   color: #000;
@@ -39,5 +41,10 @@ const props = defineProps({
   border: 1px solid var(--Gray, #b6b6b6);
   background: var(--White, #fff);
   border-radius: 35px;
+  box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.2);
+  transition:  0.3s;
+}
+.service:hover{
+   box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.4);
 }
 </style>
