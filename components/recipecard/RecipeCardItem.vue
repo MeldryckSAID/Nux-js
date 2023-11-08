@@ -46,10 +46,10 @@ defineProps({
 <style lang="scss">
 .c-recipe-card {
   background-color: $white;
-  box-shadow: 0 0 31px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 0px 31px 10px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-  width: 520px;
-  height: 550px;
+  width: 420px;
+  height: 380px;
   transition: border 0.3s;
   border: 2px solid $white;
 
@@ -59,8 +59,8 @@ defineProps({
 
   &__image {
     background-color: red;
-    width: 480px;
-    height: 333px;
+    width: 350px;
+    height: 175px;
     aspect-ratio: 1;
     object-fit: cover;
   }
@@ -97,5 +97,6 @@ defineProps({
 }
 .c-recipe-card:hover {
   border: 2px solid $primary-color;
+  box-shadow: 0px 0px 50px 20px rgba(0, 0, 0, 0.4);
 }
 </style>

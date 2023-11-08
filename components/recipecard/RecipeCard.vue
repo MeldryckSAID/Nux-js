@@ -29,5 +29,6 @@ console.log(recipes);
   display: grid;
   gap: rem(30);
   grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
 }
 </style>
