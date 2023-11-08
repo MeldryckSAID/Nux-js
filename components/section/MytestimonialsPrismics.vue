@@ -25,7 +25,7 @@
           size="small"
         />
       </div>
-      <img :src="item.testimonials_image.url" />
+      <img class="carrousel__image" :src="item.testimonials_image.url" />
     </div>
   </section>
 </template>
@@ -38,18 +38,26 @@ const props = defineProps({
 .part_testimonials {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  padding: 30px;
 
   .carrousel {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+
+    &__image {
+      width: 30rem;
+      height: auto;
+      margin: 5rem 0;
+    }
     .carrousel_userInfo {
       display: flex;
       flex-direction: column;
       justify-content: center;
       border-radius: 35px;
+      border-radius: 35px;
       background: var(--White, #fff);
-      box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.1);
+      box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.3);
       border-bottom: 2px solid black;
 
       position: relative;
