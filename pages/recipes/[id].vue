@@ -20,6 +20,11 @@ const { data: recipes } = await useAsyncData("recipes", async () => {
       <MyTitle el="h3" size="small" bold="bold">{{
         recipes.recipe_name
       }}</MyTitle>
+      <span
+        v-for="description in recipes.recipe_description"
+        class="presentation__description"
+        >{{ description }}</span
+      >
     </div>
 
     <div class="presenation__image">
