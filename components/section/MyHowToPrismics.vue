@@ -5,7 +5,10 @@
       <img class="linehow2" src="../../public/LineHowTo/line2.png" alt="" />
     </div> -->
     <div class="c_howto" v-for="(item, index) in howto" :key="index">
-      <div class="howto-card" :class="{ inverted: index % 2 !== 0 }">
+      <div
+        class="howto-card"
+        :class="{ inverted: index === 1, inleft: index === 2 }"
+      >
         <img :src="item.howto_image.url" />
         <div>
           <MyTitle el="h5" size="medium" strong="strong">
@@ -31,9 +34,15 @@ const props = defineProps({
 }
 .linehow-container {
   position: absolute;
+ 
   .linehow1 {
     width: 40%;
     top: 0%;
+  }
+  .linehow2 {
+    width: 40%;
+    top: 0%;
+    right: 20%;
   }
 }
 
@@ -41,10 +50,13 @@ const props = defineProps({
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
 
   &.inverted {
     flex-direction: column-reverse;
+    text-align: center;
+  }
+  &.inleft {
+    text-align: right;
   }
 
   img {

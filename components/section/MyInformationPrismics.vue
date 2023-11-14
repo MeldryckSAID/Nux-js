@@ -1,11 +1,17 @@
 <template>
-  <div class="line_information">
-    <div class="info" v-for="item in info">
-      <img :src="item.info_image.url" />
-      <MyTitle el="h5" size="medium" strong="strong"
-        ><PrismicRichText :field="item.info_title"
-      /></MyTitle>
-      <PrismicRichText :field="item.info_text" />
+  <div class="MyInformation">
+    <div class="line_information">
+      <div
+        class="info"
+        :class="{ bordered: index === 1 }"
+        v-for="(item, index) in info"
+      >
+        <img :src="item.info_image.url" />
+        <MyTitle el="h5" size="small" strong="strong"
+          ><PrismicRichText :field="item.info_title"
+        /></MyTitle>
+        <PrismicRichText :field="item.info_text" />
+      </div>
     </div>
   </div>
 </template>
@@ -15,16 +21,26 @@ const props = defineProps({
 });
 </script>
 <style lang="scss" scooped>
-.line_information {
-  font-family: Montserrat;
-  display: flex;
-  justify-content: space-around;
-  .info {
-    display: grid;
-    justify-items: center;
-    border-right: 2px solid $gray;
-    padding: 5%;
-    
+.MyInformation {
+  .line_information {
+    margin-inline: auto;
+    font-family: Montserrat;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.2);
+    height: 318px;
+    max-width: 1300px;
+    border-radius: 30px;
+    .info {
+      display: grid;
+      justify-items: center;
+      padding: 5%;
+
+      &.bordered {
+        border-right: 2px solid $gray;
+        border-left: 2px solid $gray;
+      }
+    }
   }
 }
 </style>

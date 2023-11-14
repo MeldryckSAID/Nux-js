@@ -24,17 +24,18 @@
 <script setup>
 const props = defineProps({
   newsletter: Array,
- 
 });
 </script>
 <style lang="scss" scooped>
 .Newletter {
+  margin-inline: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 1560px;
+  max-width: 1300px;
   height: 369px;
-  border-radius: 31.5px;
+  max-height: rem(300);
+  border-radius: rem(50);
   background-color: $black;
   color: $white;
   position: relative;
