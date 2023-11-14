@@ -22,8 +22,8 @@ const props = defineProps({
 </script>
 <style lang="scss" scooped>
 .MyInformation {
- 
   .line_information {
+    margin-inline: auto;
     font-family: Montserrat;
     display: flex;
     justify-content: space-around;

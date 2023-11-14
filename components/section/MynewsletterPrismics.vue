@@ -28,6 +28,7 @@ const props = defineProps({
 </script>
 <style lang="scss" scooped>
 .Newletter {
+  margin-inline: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
