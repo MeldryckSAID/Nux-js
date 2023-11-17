@@ -43,12 +43,7 @@ const { data: home } = await useAsyncData("home", () =>
       </MyTitle>
     </div>
     <RecipeCard
-      v-for="recipe in recipes"
-      :key="recipe.id"
-      :id="recipe.id"
-      :title="recipe.recipe_name"
-      :description="recipe.recipe_description"
-      :image="recipe.image_url"
+     
     />
 
     <div class="section__button">
