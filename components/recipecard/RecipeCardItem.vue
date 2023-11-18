@@ -5,7 +5,23 @@ defineProps({
   description: String,
   image: String,
   note: String,
-  
+  prix: String,
+});
+
+import { ref, onMounted } from "vue";
+
+const getRandomNumber = () => Math.floor(Math.random() * 6);
+
+const note = ref(getRandomNumber());
+
+const getRandomPrice = () => (Math.random() * (32.99 - 10.5) + 10.5).toFixed(2);
+
+const prix = ref(getRandomPrice());
+
+onMounted(() => {
+  // Update the note with a new random number when the component is mounted
+  note.value = getRandomNumber();
+  prix.value = getRandomPrice();
 });
 </script>
 
@@ -19,6 +35,9 @@ defineProps({
         <MyIcon color="none" name="Favori" stroke="primary" />
         <p class="note">{{ note }}</p>
       </div>
+      <div class="c-recipe-card__price">
+           <p class="note">${{ prix }}</p>
+        </div>
       <div class="c-recipe-card__button">
         <RouterLink :to="`/recipes/${id}`">
           <MyButton
@@ -29,15 +48,10 @@ defineProps({
             >More info</MyButton
           >
         </RouterLink>
-       
-          <MyButton
-            color="primary"
-            variant="rounded"
-            size="small"
-            tcolor="white"
-            >Add to cart</MyButton
-          >
-      
+
+        <MyButton color="primary" variant="rounded" size="small" tcolor="white"
+          >Add to cart</MyButton
+        >
       </div>
     </div>
   </div>
@@ -49,7 +63,7 @@ defineProps({
   box-shadow: 0px 0px 31px 10px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   width: 420px;
-  height: 380px;
+  height: 450px;
   transition: border 0.3s;
   border: 2px solid $white;
 
@@ -80,6 +94,12 @@ defineProps({
   &__like {
     display: flex;
     justify-content: flex-end;
+    font-family: Arial;
+  }
+  &__price {
+    display: flex;
+    justify-content: flex-end;
+    font-family: Arial;
   }
   &__button {
     display: flex;

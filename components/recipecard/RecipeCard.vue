@@ -18,7 +18,7 @@ console.log(recipes);
         :title="recipes.recipe_name"
         :description="recipes.recipe_description"
         :image="recipes.image_url"
-      
+        :note="note"
       />
     </div>
   </div>
