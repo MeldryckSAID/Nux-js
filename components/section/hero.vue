@@ -21,17 +21,22 @@
     justify-content: space-around;
     align-items: center;
     border-radius: 3%;
+    padding-right: 2.5rem;
+    position: relative;
   }
   .lumiere{
     z-index: 1;
   }
    .ombre {
-    position: absolute; 
-    background: linear-gradient(210deg, #d9d9d9 35.39%, rgba(217, 217, 217, 0) 35.50%);
-    border-radius: 5%;
-    width: 445px;
-    height: 800px;
-    z-index: 0; 
+    background: #d9d9d9;
+    background: linear-gradient(200deg,#d9d9d9 -18.39%,hsla(0,0%,85%,0) 89.51%);
+    border-radius: 1.875rem;
+    height: 52.3125rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 27.8125rem;
+    z-index: 0;
     
   }
 }
