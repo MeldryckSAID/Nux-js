@@ -1,7 +1,12 @@
-
 <template>
-    <AllRecipeCard/>
+  <div class="body">
+    <AllRecipeCard />
+  </div>
 </template>
 
 <script setup></script>
-<style lang="scss"></style>
+<style lang="scss">
+.body {
+  margin: 5%;
+}
+</style>

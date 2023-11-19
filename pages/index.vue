@@ -31,11 +31,10 @@ const { data: home } = await useAsyncData("home", () =>
     </div>
 
     <MyServicePrismics :Cardservice="home.data.services_card" />
-    
+
     <!-- menu -->
     <div class="presentation_section">
       <h5 class="section__name">
-
         <PrismicRichText :field="home.data.presentation_item" />
       </h5>
       <MyTitle el="h3" size="large">
@@ -43,7 +42,6 @@ const { data: home } = await useAsyncData("home", () =>
       </MyTitle>
     </div>
     <RecipeCard
-     
     />
 
     <div class="section__button">
