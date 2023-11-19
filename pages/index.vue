@@ -41,8 +41,7 @@ const { data: home } = await useAsyncData("home", () =>
         <PrismicRichText :field="home.data.item_title" />
       </MyTitle>
     </div>
-    <RecipeCard
-    />
+    <RecipeCard/>
 
     <div class="section__button">
       <RouterLink :to="`/recipes/AllRecipes`">
