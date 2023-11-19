@@ -31,13 +31,15 @@ onMounted(() => {
       <img class="c-recipe-card__image" :src="image" alt="" />
       <p class="c-recipe-card__title">{{ title }}</p>
       <!-- <p class="c-recipe-card__description">{{ description }}</p> -->
-      <div class="c-recipe-card__like">
-        <MyIcon color="none" name="Favori" stroke="primary" />
-        <p class="note">{{ note }}</p>
-      </div>
-      <div class="c-recipe-card__price">
-           <p class="note">${{ prix }}</p>
+      <div class="c-recipe-card__information">
+        <div class="c-recipe-card__like">
+          <MyIcon color="none" name="Favori" stroke="primary" />
+          <p class="note">{{ note }}</p>
         </div>
+        <div class="c-recipe-card__price">
+          <p class="note">${{ prix }}</p>
+        </div>
+      </div>
       <div class="c-recipe-card__button">
         <RouterLink :to="`/recipes/${id}`">
           <MyButton
@@ -91,16 +93,18 @@ onMounted(() => {
       margin-top: 10px;
     }
   }
+  &__information {
+    display: flex;
+    justify-content: space-around;
+    font-family: Arial;
+    font-weight: 600;
+  }
   &__like {
     display: flex;
     justify-content: flex-end;
     font-family: Arial;
   }
-  &__price {
-    display: flex;
-    justify-content: flex-end;
-    font-family: Arial;
-  }
+ 
   &__button {
     display: flex;
     justify-content: space-around;
